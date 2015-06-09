@@ -1,4 +1,4 @@
-<%= form_for @response, :html => { :class => "form-horizontal response" } do |f| %>
+<%= semantic_form_for @response = Response.new, url: topic_responses_path(@topic), :html => { :class => "form-horizontal response" } do |f| %>
 
   <% if @response.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -14,34 +14,15 @@
       </div>
     </div>
   <% end %>
-
+  
   <div class="form-group">
-    <%= f.label :author_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :author_id, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:author_id) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :content, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :content, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:content) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :topic_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :topic_id, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:topic_id) %>
-  </div>
-
-  <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                responses_path, :class => 'btn btn-default' %>
+      <%=f.inputs do %>
+        <%= f.input :content%>
+      <% end %>
+      <%= f.actions do %>
+        <%= f.action :submit, :as => :button %>
+      <% end %>
     </div>
   </div>
 

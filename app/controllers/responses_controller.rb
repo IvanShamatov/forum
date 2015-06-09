@@ -25,13 +25,14 @@ class ResponsesController < ApplicationController
   # POST /responses.json
   def create
     @response = Response.new(response_params)
-
+    @response.topic = Topic.find(params[:topic_id])
+    @response.author = current_user
     respond_to do |format|
       if @response.save
-        format.html { redirect_to @response, notice: 'Response was successfully created.' }
+        format.html { redirect_to @response.topic, notice: 'Response was successfully created.' }
         format.json { render :show, status: :created, location: @response }
       else
-        format.html { render :new }
+        format.html { redirect_to @response.topic }
         format.json { render json: @response.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +70,6 @@ class ResponsesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def response_params
-      params[:response]
+      params.require(:response).permit(:author_id, :content, :topic_id)
     end
 end

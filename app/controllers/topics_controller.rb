@@ -5,12 +5,14 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all
+    @topic = Topic.last
+    redirect_to @topic
   end
 
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @responses = @topic.responses
   end
 
   # GET /topics/new
@@ -26,7 +28,7 @@ class TopicsController < ApplicationController
   # POST /topics.json
   def create
     @topic = Topic.new(topic_params)
-
+    @topic.author = current_user
     respond_to do |format|
       if @topic.save
         format.html { redirect_to @topic, notice: 'Topic was successfully created.' }

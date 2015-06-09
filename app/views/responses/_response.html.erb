@@ -1,0 +1,8 @@
+<li>
+  <%= response.content %>
+  <%= response.author.email %>
+  <ul>
+    <%= render response.comments %>
+  </ul>
+  <%= render "comments/form", locals: {response: response}%>
+</li>
