@@ -4,5 +4,5 @@
   <ul>
     <%= render response.comments %>
   </ul>
-  <%= render "comments/form", locals: {response: response}%>
+  <%= render partial: "comments/form", locals: {resp: response}%>
 </li>
