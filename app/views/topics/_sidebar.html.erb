@@ -1,11 +1,10 @@
 <div class="col-lg-3">
-  <div class="well sidebar-nav">
-    <h3>Latest</h3>
-    <ul class="nav nav-list">
+  <div class="well">
+    <div class="list-group">
       <% @sidebar_topics.each do |topic| %>
-        <%= link_to topic.title, topic_path(topic) %>
+        <%= link_to topic.title, topic_path(topic), class: (params[:id].to_i == topic.id) ? "list-group-item active" : "list-group-item" %>
       <% end %>
-    </ul>
-    <%= link_to "New topic", new_topic_path %> 
+    </div>
+    <%= link_to "New topic", new_topic_path, class: "btn btn-default" %> 
   </div><!--/.well -->
 </div><!--/span-->

@@ -1,29 +1,12 @@
-<%= semantic_form_for @response = Response.new, url: topic_responses_path(@topic), :html => { :class => "form-horizontal response" } do |f| %>
-
-  <% if @response.errors.any? %>
-    <div id="error_expl" class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@response.errors.count, "error") %> prohibited this response from being saved:</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-        <% @response.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
-  
-  <div class="form-group">
-    <div class="col-lg-10">
-      <%=f.inputs do %>
-        <%= f.input :content%>
-      <% end %>
-      <%= f.actions do %>
-        <%= f.action :submit, :as => :button %>
-      <% end %>
-    </div>
+<!-- <div class="panel panel-default">
+  <div class="panel-body"> -->
+  <%= semantic_form_for @response = Response.new, url: topic_responses_path(@topic), :html => { :class => "response" } do |f| %>
+    <%=f.inputs do %>
+      <%= f.input :content, input_html: {rows:3} %>
+    <% end %>
+    <%= f.actions do %>
+      <%= f.action :submit, :as => :button %>
+    <% end %>
+  <% end %><!-- 
   </div>
-
-<% end %>
+</div> -->

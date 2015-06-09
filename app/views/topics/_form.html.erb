@@ -14,19 +14,21 @@
       </div>
     </div>
   <% end %>
+  <div class="panel-body">
+    <div class="form-group">
+      <div class="col-lg-10">
+        <%= f.inputs do %>
+          <%= f.input :kind, as: :select, collection: Topic.kinds.keys.to_a, include_blank: false %>
+          <%= f.input :title %>
+          <%= f.input :content, input_html: {rows:10} %>
+        <% end %>
 
-  <div class="form-group">
-    <div class="col-lg-10">
-      <%= f.inputs do %>
-        <%= f.input :title %>
-        <%= f.input :content%>
-        <%= f.input :kind, as: :select, collection: Topic.kinds.keys.to_a, include_blank: false %>
-      <% end %>
-
-      <%= f.actions do %>
-        <%= f.action :submit, :as => :button %>
-        <%= f.action :cancel, :as => :link %>
-      <% end %>
+        <%= f.actions do %>
+          <%= f.action :submit, :as => :button %>
+          <%= f.action :cancel, :as => :link %>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>
+</div>

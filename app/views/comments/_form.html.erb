@@ -1,25 +1,8 @@
 <%= semantic_form_for @comment=Comment.new, url: topic_response_comments_path(@topic,resp) do |f| %>
-  <% if @comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
-      <ul>
-      <% @comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <div class="col-lg-10">
-      <%=f.inputs do %>
-        <%= f.input :content%>
-      <% end %>
-      <%= f.actions do %>
-        <%= f.action :submit, :as => :button %>
-      <% end %>
-    </div>
+  <div class="input-group"> 
+    <%= f.text_field :content, class: "form-control" %>
+    <span class="input-group-btn">
+      <%= f.action :submit, :as => :button %>
+    </span>
   </div>
-
 <% end %>

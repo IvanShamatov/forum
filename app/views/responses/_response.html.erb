@@ -1,8 +1,13 @@
-<li>
-  <%= response.content %>
-  <%= response.author.email %>
-  <ul>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= response.content %>
+    <%= response.author.email %>
+  </div>
     <%= render response.comments %>
-  </ul>
-  <%= render partial: "comments/form", locals: {resp: response}%>
-</li>
+  <div class="panel-footer">
+    <%= render partial: "comments/form", locals: {resp: response}%>
+  </div>
+  
+
+</div>
+
