@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
   before_action :set_sidebar
+  before_filter :authenticate_user!, except: [:index, :show]
 
   # GET /topics
   # GET /topics.json
@@ -12,7 +13,7 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
-    @responses = @topic.responses
+    @comments = @topic.comments
   end
 
   # GET /topics/new

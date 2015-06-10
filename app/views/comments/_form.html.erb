@@ -1,8 +1,7 @@
-<%= semantic_form_for @comment=Comment.new, url: topic_response_comments_path(@topic,resp) do |f| %>
-  <div class="input-group"> 
-    <%= f.text_field :content, class: "form-control" %>
-    <span class="input-group-btn">
-      <%= f.action :submit, :as => :button %>
-    </span>
+<%= semantic_form_for @comment=Comment.new, url: topic_comments_path(@topic) do |f| %>
+  <%=f.inputs do %>
+    <%= f.input :content, input_html: {rows:3} %>
+  <% end %>
+  <%=f.action :submit, :as => :button %>
   </div>
 <% end %>

@@ -3,9 +3,7 @@ Rails.application.routes.draw do
 
 
   resources :topics do 
-    resources :responses do 
-      resources :comments
-    end
+    resources :comments, only: [:create, :update, :destroy]
   end
 
 
